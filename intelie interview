@@ -1,0 +1,35 @@
+sudo systemctl start httpd
+http://ip_servidor_1
+
+sudo systemctl stop httpd
+
+sudo systemctl start httpd
+
+sudo systemctl restart httpd
+
+sudo mkdir -p /var/www/server1.com/html
+
+sudo chmod -R 755 /var/www
+
+sudo mkdir /etc/httpd/sites-available /etc/httpd/sites-enabled
+
+sudo vi /etc/httpd/conf/httpd.conf
+
+IncludeOptional sites-enabled/*.conf
+
+sudo vi /etc/httpd/sites-available/server1.com.conf
+
+<VirtualHost *:80>
+    ServerName www.server1.com
+    ServerAlias server1.com
+    DocumentRoot /var/www/server1.com/html
+    ErrorLog /var/www/server1.com/log/error.log
+    CustomLog /var/www/server1.com/log/requests.log combined
+</VirtualHost>
+
+sudo ln -s /etc/httpd/sites-available/server1.com.conf /etc/httpd/sites-enabled/server1.com.conf
+
+sudo systemctl restart httpd
+
+http://server1.com
+
