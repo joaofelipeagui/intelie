@@ -1,0 +1,19 @@
+Ssh-keygen
+Creating SSH access
+(/your/home/.ssh/id_rsa):
+Saving the key in the sub directory
+Ssh-copy-id username@server_1
+Copying the public key 
+Cat~/.ssh/id_rsa_pub | ssh username@server_1 “mkdir -p~/.ssh && touch ~/.ssh/authorized_keys && chmod -R go= ~/.ssh/authorized_keys”
+Cat ~/.ssh/id_rsa.pub
+ Showing the public key 
+$ mkdir -p~/.ssh
+Creating SSH directory
+$ chmod -R go = ~/.ssh
+Giving permissions to the directory
+$ ssh username@server_1
+Accessing the remote host
+$ sudo systemctl restart sshd.service
+Restarting SSH service
+
+$ ssh username@server_1
